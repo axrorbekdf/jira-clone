@@ -1,7 +1,8 @@
 
 <template>
-    <div class="h-[10vh] fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto flex items-center h-full justify-between">
+    <div class="h-[10vh] fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-900 z-50">
+        
+        <div class="container-fluid mx-auto flex items-center h-full justify-between">
             <nuxt-link to="/" class="flex items-center space-x-1">
                 <NuxtImg src="/logo.svg" width="50" height="50" />
                 <span class="text-2xl font-medium">Jira software</span>
@@ -9,6 +10,14 @@
 
             <div class="flex items-center space-x-2">
                 <SharedColorMode />
+
+                <nuxt-link to="/auth">
+                    <UButton color="blue">Get it free</UButton>
+                </nuxt-link>
+
+                <nuxt-link to="/auth">
+                    <UButton color="blue" variant="so">Get it free</UButton>
+                </nuxt-link>
             </div>
         </div>
     </div>
