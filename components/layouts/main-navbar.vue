@@ -6,6 +6,10 @@
                 <NuxtImg src="/logo.svg" width="50" height="50" />
                 <span class="text-2xl font-medium">Jira software</span>
             </nuxt-link>
+
+            <div class="flex items-center space-x-2">
+                <SharedColorMode />
+            </div>
         </div>
     </div>
 </template>
