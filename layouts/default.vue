@@ -1,8 +1,7 @@
+
 <template>
-    <div>
-        <p>Main Layout</p>
-    </div>
     <section>
+        <LayoutsMainNavbar />
         <slot />
     </section>
 </template>
