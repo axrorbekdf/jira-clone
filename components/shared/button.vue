@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn">
+    <UButton>
         <slot/>
-    </button>
+    </UButton>
 </template>

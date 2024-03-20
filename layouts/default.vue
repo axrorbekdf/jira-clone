@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Default Layout</p>
+        <p>Main Layout</p>
     </div>
     <section>
         <slot />
