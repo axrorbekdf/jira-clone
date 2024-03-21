@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { NuxtLink, type NuxtImg, type UButton, UTabs, Icon } from '#components';
 import { tabs } from "@/constants";
+import PrinterGet from '~/x-printer';
+const printer = PrinterGet.printer();
 
 useHead({
     title: "Jira software"
@@ -22,7 +24,7 @@ useHead({
                 </p>
     
                 <NuxtLink to="/auth/login"> 
-                    <UButton color="blue">
+                    <UButton color="blue" @click="printer()">
                         Try it free
                     </UButton>
                 </NuxtLink>
@@ -63,6 +65,28 @@ useHead({
                     </div>
                 </template>
             </UTabs>
+        </section>
+
+
+        <!--  -->
+        <section>
+            <h1 class="text-4xl font-medium text-center mt-20">Easier than ever</h1>
+            <div class="flex items-center justify-between max-w-xl mx-auto mt-4">
+                <div class="w-16 h-16 bg-blue-500 dark:bg-blue-800 rounded-full flex items-center justify-center">
+                    <Icon name="material-symbols:file-copy"  class="text-white text-4xl"/>
+                </div>
+                
+                <div class="flex-1 h-2 bg-gradient-to-r from-blue-500 dark:from-blue-800 to-gray-500 dark:from-gray-800"></div>
+
+                <div class="w-16 h-16 bg-gray-500 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                    <Icon name="material-symbols-light:linked-services"  class="text-white text-4xl"/>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 mt-20">
+                <div class="bg-blue-500 dark:bg-blue-800 p-8"></div>
+                <div class="bg-gray-500 dark:bg-gray-800 p-8"></div>
+            </div>
         </section>
     </main>
 </template>
