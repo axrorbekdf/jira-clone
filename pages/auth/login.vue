@@ -7,6 +7,6 @@
 
 <template>
     <h1>
-        Login
+        Login page create?
     </h1>
 </template>

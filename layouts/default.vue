@@ -1,7 +1,7 @@
 
 <template>
     <LayoutsMainNavbar />
-    <section class="min-h-[10vh] bg-white dark:bg-block">
+    <section class="min-h-screen bg-white dark:bg-black">
         <slot />
     </section>
 </template>

@@ -11,11 +11,11 @@
             <div class="flex items-center space-x-2">
                 <SharedColorMode />
 
-                <nuxt-link to="/auth">
+                <nuxt-link to="/auth/login">
                     <UButton color="blue">Get it free</UButton>
                 </nuxt-link>
 
-                <nuxt-link to="/auth">
+                <nuxt-link to="/auth/login">
                     <UButton color="blue" variant="so">Get it free</UButton>
                 </nuxt-link>
             </div>
