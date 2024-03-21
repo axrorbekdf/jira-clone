@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NuxtLink, type NuxtImg, type UButton, UTabs, Icon } from '#components';
-import { tabs } from "@/constants";
+import { tabs, templates } from "@/constants";
 
 useHead({
     title: "Jira software"
@@ -29,7 +29,7 @@ useHead({
 
             </div>
     
-            <NuxtImg src="/hero.webp"/>
+            <NuxtImg src="/hero.webp" class="w-full"/>
         </section>
     
     
@@ -83,8 +83,52 @@ useHead({
             </div>
 
             <div class="grid grid-cols-2 mt-20">
-                <div class="bg-blue-500 dark:bg-blue-800 p-8"></div>
-                <div class="bg-gray-500 dark:bg-gray-800 p-8"></div>
+                <div class="bg-blue-500 dark:bg-blue-800 p-8">
+                    <div class="flex flex-col space-y-2 items-center">
+                        <h1 class="text-2xl font-medium">
+                            Templates give you a head start
+                        </h1>
+                        <p class="text-xl">Get started with ready-made template.</p>
+                    </div>
+
+                    <div v-for="item in templates" :key="item">
+                        <div class="flex flex-col mt-4">
+                            <div class="bg-gray-500 dark:bg-gray-800 flex items-center gap-5 h-20">
+                                <div class="flex items-center justify-center bg-blue-500/30 dark:bg-blue-800/30 p-3 h-full">
+                                    <NuxtImg :src="item.image" class="w-12"/>
+                                </div>
+
+                                <div class="flex flex-col space-y-2">
+                                    <h2 class="font-medium text-xl">{{ item.name }}</h2>
+                                    <div class="group hover:underline" role="button">
+                                        <span>Learn more</span>
+                                        <Icon name="material-symbols:arrow-right-alt-rounded"  class="group-hover:translate-x-2 transition"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-4 mt-12 rounded-r-full flex flex-col space-y-2 bg-gradient-to-l from-gray-500 dark:from-gray-800 to-blue-500 dark:to-blue-800">
+                        <Icon name="bxs:quote-alt-left" class="text-4xl"/>
+                        <p class="text-lg pl-2">You can decide how you are working as a team first and then let the software work around you."</p>
+                        <div class="pl-2 opacity-70">
+                            <p class="font-bold">MARIA BONORCHIS</p>
+                            <p class="text-sm">AGILE DELIVERY MANAGER, CANCER RESEARCH UK</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg-gray-500 dark:bg-gray-800 p-8">
+                    <div class="flex flex-col space-y-2 items-center">
+                        <h1 class="text-2xl font-medium">Then customize as you grow</h1>
+                        <p class="text-xl text-center">
+                            Jira adapts to the way you work, not the other way around. Start simple, customize as you go.
+                        </p>
+
+                        <NuxtImg src="./product.webp" class="w-full"/>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
