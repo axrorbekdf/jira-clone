@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import { NuxtLink, type NuxtImg, type UButton, UTabs, Icon } from '#components';
 import { tabs } from "@/constants";
-import PrinterGet from '~/x-printer';
-const printer = PrinterGet.printer();
+import {PrinterGet} from '@/x-printer';
+
+function printer(){
+    return PrinterGet.printer();
+}
 
 useHead({
     title: "Jira software"
@@ -24,10 +27,14 @@ useHead({
                 </p>
     
                 <NuxtLink to="/auth/login"> 
-                    <UButton color="blue" @click="printer()">
+                    <UButton color="blue">
                         Try it free
                     </UButton>
                 </NuxtLink>
+
+                <UButton color="blue" @click="printer()">
+                    Try it free
+                </UButton>
             </div>
     
             <NuxtImg src="/hero.webp"/>

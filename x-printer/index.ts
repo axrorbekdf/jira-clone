@@ -1,8 +1,6 @@
 import { print } from "pdf-to-printer";
 
-
-
-const PrinterGet = {
+export const PrinterGet = {
   fileToPrint: "./dummy.pdf",
   printerName: "XP-80",
   
@@ -12,6 +10,7 @@ const PrinterGet = {
     };
     
     print(this.fileToPrint, options).then(console.log);
+    // console.log(options);
+    
   }
 }
-export default PrinterGet
