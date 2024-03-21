@@ -9,7 +9,7 @@ useHead({
 </script>
 
 <template>
-    <main class="pb-72">
+    <main class="pb-70">
         <!-- HERO SECTION -->
         <section class="flex items-center justify-between h-[100vh] pt-[10vh] gap-4 bg-gradient-to-t from-white dark:from-black to-blue-500 dark:to-blue-800">
     
@@ -120,11 +120,13 @@ useHead({
 
                 </div>
                 <div class="bg-gray-500 dark:bg-gray-800 p-8">
-                    <div class="flex flex-col space-y-2 items-center">
-                        <h1 class="text-2xl font-medium">Then customize as you grow</h1>
-                        <p class="text-xl text-center">
-                            Jira adapts to the way you work, not the other way around. Start simple, customize as you go.
-                        </p>
+                    <div class="flex flex-col space-y-6 items-center">
+                        <div class="text-center">
+                            <h1 class="text-2xl font-medium">Then customize as you grow</h1>
+                            <p class="text-xl text-center">
+                                Jira adapts to the way you work, not the other way around. Start simple, customize as you go.
+                            </p>
+                        </div>
 
                         <NuxtImg src="./product.webp" class="w-full"/>
                     </div>
