@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Icon } from '#build/components';
+import type { Icon } from '#components';
 import type { FormError, FormSubmitEvent } from '#ui/types'
 import { ACCOUNT, UNIQUE_ID } from '~/libs/appwrite';
 

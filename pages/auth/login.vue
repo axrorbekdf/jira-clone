@@ -1,12 +1,26 @@
 <script lang="ts" setup>
+import { ACCOUNT } from '~/libs/appwrite';
 
     definePageMeta({
         layout: "auth"
     });
 
+    useHead({
+        title: "Auth | Jira software"
+    })
+
+    const router = useRouter();
+    
     const isLogin = ref(true);
 
     const toggleLogin = () => (isLogin.value = !isLogin.value)
+
+    onMounted(() => {
+        ACCOUNT.get()
+        .then(() => {
+            router.push('/')
+        })
+    });
 </script>
 
 <template>

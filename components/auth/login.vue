@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
-import { ACCOUNT, UNIQUE_ID } from '~/libs/appwrite';
+import { ACCOUNT } from '~/libs/appwrite';
 
 
 defineProps({
@@ -10,6 +10,8 @@ defineProps({
     },
 });
 const toast = useToast();
+const authStore = useAuthStore();
+const router = useRouter();
 
 const isLoading = ref(false);
 const errors = ref('');
@@ -34,10 +36,21 @@ async function onSubmit (event: FormSubmitEvent<any>) {
 
   try{
     await ACCOUNT.createEmailPasswordSession(email, password);
+    const response = await ACCOUNT.get();
+
+    authStore.set({
+      id: response.$id,
+      name: response.name,
+      email: response.email,
+      status: response.status,
+    });
+
     toast.add({
-      title: 'Account created',
-      description: "You can now login with your new account"
+      title: 'Logged in',
+      description: "You are now logged in"
     })
+
+    router.push('/');
 
     isLoading.value = false;
   } catch(e: any){
