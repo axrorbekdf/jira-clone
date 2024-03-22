@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <p>Login Layout</p>
-    </div>
-    <section>
+    <LayoutsMainNavbar />
+    <section class="min-h-screen bg-white dark:bg-black">
         <slot />
     </section>
 </template>

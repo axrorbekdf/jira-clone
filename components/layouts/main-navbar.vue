@@ -16,7 +16,7 @@
                 </nuxt-link>
 
                 <nuxt-link to="/auth/login">
-                    <UButton color="blue" variant="so">Get it free</UButton>
+                    <UButton color="blue" variant="soft">Sign in</UButton>
                 </nuxt-link>
             </div>
         </div>
