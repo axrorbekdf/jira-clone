@@ -16,8 +16,8 @@ const state = reactive({
 
 const validate = (state: any): FormError[] => {
   const errors = []
-  if (!state.email) errors.push({ path: 'email', message: 'Required' })
-  if (!state.password) errors.push({ path: 'password', message: 'Required' })
+  if (!state.email) errors.push({ path: 'email', message: 'Email is required' })
+  if (!state.password) errors.push({ path: 'password', message: 'Password is required' })
   return errors
 }
 

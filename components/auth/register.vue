@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
+import { ACCOUNT, UNIQUE_ID } from '~/libs/appwrite';
 
 
 defineProps({
@@ -17,15 +18,25 @@ const state = reactive({
 
 const validate = (state: any): FormError[] => {
   const errors = []
-  if (!state.name) errors.push({ path: 'name', message: 'Required' })
-  if (!state.email) errors.push({ path: 'email', message: 'Required' })
-  if (!state.password) errors.push({ path: 'password', message: 'Required' })
+  if (!state.name) errors.push({ path: 'name', message: 'Name is required' })
+  if (!state.email) errors.push({ path: 'email', message: 'Email is required' })
+  if (!state.password) errors.push({ path: 'password', message: 'Password is required' })
   return errors
 }
 
 async function onSubmit (event: FormSubmitEvent<any>) {
   // Do something with data
-  console.log(event.data)
+  const {name, email, password} = event.data;
+  
+  try{
+    const response = await ACCOUNT.create(UNIQUE_ID, email, password, name);
+    console.log(response);
+    
+  } catch(error){
+
+  }
+  
+  // console.log(event.data)
 }
 </script>
 
