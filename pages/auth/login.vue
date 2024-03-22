@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ACCOUNT } from '~/libs/appwrite';
+import { useLoadingStore } from '~/store/loading.store';
 
     definePageMeta({
         layout: "auth"
@@ -10,6 +11,7 @@ import { ACCOUNT } from '~/libs/appwrite';
     })
 
     const router = useRouter();
+    const loadingStore = useLoadingStore();
     
     const isLogin = ref(true);
 
@@ -20,6 +22,7 @@ import { ACCOUNT } from '~/libs/appwrite';
         .then(() => {
             router.push('/')
         })
+        .finally(() => loadingStore.set(false));
     });
 </script>
 

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ACCOUNT } from '~/libs/appwrite';
+import { useLoadingStore } from '~/store/loading.store';
 
 
 const authStore = useAuthStore();
+const loadingStore = useLoadingStore();
 
 onMounted(() => {
     ACCOUNT.get()
@@ -13,7 +15,8 @@ onMounted(() => {
             email: response.email,
             status: response.status,
         });
-    })
+    }).finally(() => loadingStore.set(false));
+
 });
 </script>
 <template>
