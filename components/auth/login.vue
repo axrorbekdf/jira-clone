@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
+import { ACCOUNT, UNIQUE_ID } from '~/libs/appwrite';
 
 
 defineProps({
@@ -8,6 +9,10 @@ defineProps({
         required: true
     },
 });
+const toast = useToast();
+
+const isLoading = ref(false);
+const errors = ref('');
 
 const state = reactive({
   email: undefined,
@@ -23,11 +28,38 @@ const validate = (state: any): FormError[] => {
 
 async function onSubmit (event: FormSubmitEvent<any>) {
   // Do something with data
-  console.log(event.data)
+  // console.log(event.data)
+  isLoading.value = true;
+  const {email, password} = event.data;
+
+  try{
+    await ACCOUNT.createEmailPasswordSession(email, password);
+    toast.add({
+      title: 'Account created',
+      description: "You can now login with your new account"
+    })
+
+    isLoading.value = false;
+  } catch(e: any){
+    errors.value = e.message;
+    isLoading.value = false;
+  }
+
+
 }
 </script>
 
 <template>
+
+  <UAlert
+    icon="i-heroicons-command-line"
+    :description="errors"
+    title="Error"
+    v-if="errors"
+    color="red"
+    variant="outline"
+  />
+
   <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
     <UFormGroup label="Email" name="email">
       <UInput v-model="state.email" color="blue" size="lg"/>
@@ -42,8 +74,13 @@ async function onSubmit (event: FormSubmitEvent<any>) {
         <span class="text-blue-500 hover:underline" role="button" @click="$props.toggleLogin">Sign up</span>
     </div>
 
-    <UButton type="submit" color="blue" class="w-full" block size="lg">
-      Next
+    <UButton type="submit" color="blue" class="w-full" block size="lg" :disabled="isLoading">
+      
+      <template v-if="isLoading">
+        <Icon name="svg-spinners:3-dots-fade" class="w-5 h-5"/>
+      </template>
+      <template v-else>Next</template>
+
     </UButton>
   </UForm>
 </template>
