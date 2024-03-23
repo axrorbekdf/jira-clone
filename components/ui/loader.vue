@@ -1,3 +1,3 @@
 <template>
-    <span>Loader...</span>
+    <span>Loader...test</span>
 </template>
