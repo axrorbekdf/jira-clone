@@ -39,7 +39,7 @@ const { currentUser } = useAuthStore();
 
             </div>
     
-            <NuxtImg src="/hero.webp" class="w-full"/>
+            <NuxtImg src="/hero.webp" class="w-1/2"/>
         </section>
     
     
