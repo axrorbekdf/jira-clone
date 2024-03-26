@@ -22,12 +22,15 @@ import { useLoadingStore } from '~/store/loading.store';
         .then(() => {
             router.push('/')
         })
-        .finally(() => loadingStore.set(false));
+        .catch((error) => {
+            loadingStore.set(false)
+        });
     });
 </script>
 
 <template>
-    <div class="flex items-center justify-center h-screen w-full relative">
+    <UiLoader v-if="loadingStore.isLoading" />
+    <div v-else class="flex items-center justify-center h-screen w -full relative">
         <NuxtImg src="/bg-auth.jpg" class="absolute inset-0 w-full h-full object-cover z-10" />
         <div class="absolute inset-0 w-full h-full z-20 dark:bg-black/40 bg-white/40"></div>
 

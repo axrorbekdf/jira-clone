@@ -3,31 +3,38 @@ import type { NuxtLink, UButton } from '#components';
 import { ACCOUNT } from '~/libs/appwrite';
 
 
-    const { currentUser } = useAuthStore();
+    const { currentUser, clear } = useAuthStore();
+    const loadingStore = useLoadingStore();
     const router = useRouter();
     const toast = useToast();
-    const isLoading = ref(false);
     const errors = ref('');
 
     const logout = async () => {
-        isLoading.value = true;
-        try{
-            await ACCOUNT.deleteSession('current')
-            .then(() => {
-                router.push('auth/login')    
-            });
-            isLoading.value = false;
+        loadingStore.set(true);
+    
+        ACCOUNT.deleteSession('current')
+        .then(() => {
+            router.push('auth/login')    
+            loadingStore.set(false);
+
             toast.add({
                 title: 'Log out',
             })
 
-        } catch(e: any){
+            clear();
 
+        }).catch(error => {
+            console.log(error);
+            errors.value = error;
             toast.add({
                 title: 'Error',
+                description: error.message
             })
-            isLoading.value = false;
-        }
+            loadingStore.set(false);
+        })
+        .finally(() => {
+            loadingStore.set(false)
+        }); 
     }
 </script>
 
@@ -47,9 +54,6 @@ import { ACCOUNT } from '~/libs/appwrite';
                 <template v-if="currentUser.status">
 
                     <UButton color="red" class="font-bold" @click="logout">
-                        <template v-if="isLoading">
-                            <Icon name="svg-spinners:3-dots-fade" class="w-5 h-5"/>
-                        </template>
                         Log out
                     </UButton>
 

@@ -15,13 +15,18 @@ onMounted(() => {
             email: response.email,
             status: response.status,
         });
-    }).finally(() => loadingStore.set(false));
+    }).finally(() => {
+        loadingStore.set(false)
+    });
 
 });
 </script>
 <template>
-    <LayoutsMainNavbar />
-    <section class="min-h-screen bg-white dark:bg-black">
-        <slot />
-    </section>
+    <UiLoader v-if="loadingStore.isLoading" />
+    <template v-else>
+        <LayoutsMainNavbar />
+        <section class="min-h-screen bg-white dark:bg-black">
+            <slot />
+        </section>
+    </template>
 </template>
