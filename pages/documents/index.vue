@@ -11,15 +11,18 @@ useHead({
     title: "Documents | Jira software"
 })
 
-const {} = useStatusQuery();
+const { data } = useStatusQuery();
 
 </script>
 
 <template>
     <div class="grid grid-cols-4 gap-4 mt-12">
-       <UButton v-for="tarkib in statusList" :key="tarkib" class="w-full h-12" color="blue" variant="outline">
-            <span class="fond-bold">{{ tarkib.name }}</span>
-            <span class="text-sm text-neutral-500">{{ tarkib.item.length }}</span>
-       </UButton>
+        <div v-for="(item, index) in data" :key="item.id">
+            <UButton class="w-full h-12" color="blue" variant="outline">
+                <span class="fond-bold">{{ item.name }}</span>
+                <span class="text-sm text-neutral-500">{{ item.items.length }}</span>
+            </UButton>
+        </div>
+        
     </div>
 </template>
