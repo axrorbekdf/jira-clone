@@ -1,3 +1,9 @@
+import { EnumStatus } from "~/types";
+
+export const DB_ID = 'jira-db';
+export const COLLECTION_DEALS = 'deals';
+export const COLLECTION_COMMENTS = 'comments';
+
 export const tabs = [
     {
         label: "Plan",
@@ -71,7 +77,7 @@ export const templates = [
     },
 ];
 
-export const sidebar_items = [
+export const sidebarItems = [
     {
         name: "Dashboard",
         path: "/documents",
@@ -90,11 +96,36 @@ export const sidebar_items = [
     {
         name: "Produced",
         path: "/documents/produced",
-        icon: "eoc-icons:product-subscriptions"
+        icon: "eos-icons:product-subscriptions"
+        
     },
     {
         name: "Done",
         path: "/documents/done",
         icon: "ic:baseline-cloud-done"
     },
+];
+
+
+export const statusList = [
+    {
+        id: EnumStatus.todo,
+        name: "To Do",
+        item: [],
+    },
+    {
+        id: EnumStatus["in-progress"],
+        name: "In progress",
+        item: [],
+    },
+    {
+        id: EnumStatus.produced,
+        name: "Produced",
+        item: [],
+    },
+    {
+        id: EnumStatus.done,
+        name: "Done",
+        item: [],
+    }
 ];
