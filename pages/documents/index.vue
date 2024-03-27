@@ -22,7 +22,19 @@ const { data } = useStatusQuery();
                 <span class="fond-bold">{{ item.name }}</span>
                 <span class="text-sm text-neutral-500">{{ item.items.length }}</span>
             </UButton>
+
+            <div v-for="card in item.items" :key="card.id" class="my-3 bg-gray-900 rounded-md p-2" role="button">
+                <div class="flex items-center space-x-2">
+                    <span class="font-bold text-lg uppercase">{{ card.name }}</span>
+                </div>
+
+                <UDivider class="my-3" />
+
+                <div class="opacity-55 text-sm line-clamp-1">
+                    {{ card.description }}
+                </div>
+            </div>
         </div>
-        
+    
     </div>
 </template>
