@@ -70,3 +70,31 @@ export const templates = [
         image: './devops.svg'
     },
 ];
+
+export const sidebar_items = [
+    {
+        name: "Dashboard",
+        path: "/documents",
+        icon: "radix-icons:dashboard"
+    },
+    {
+        name: "To do",
+        path: "/documents/to-do",
+        icon: "ri:todo-fill"
+    },
+    {
+        name: "In progress",
+        path: "/documents/in-progress",
+        icon: "game-icons:progression"
+    },
+    {
+        name: "Produced",
+        path: "/documents/produced",
+        icon: "eoc-icons:product-subscriptions"
+    },
+    {
+        name: "Done",
+        path: "/documents/done",
+        icon: "ic:baseline-cloud-done"
+    },
+];
