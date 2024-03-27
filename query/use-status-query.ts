@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/vue-query";
 import { Query } from "appwrite";
-import { COLLECTION_DEALS, DB_ID } from "~/constants";
+import { COLLECTION_DEALS, DATABASE_ID } from "~/constants";
 import { DATABASE } from "~/libs/appwrite";
 import { useAuthStore } from './../store/auth.store'
 
@@ -9,16 +9,12 @@ export const useStatusQuery = () => {
     
     return useQuery({
         queryKey: ['deals'],
-        queryFn: () => {
-            
+        queryFn: () => 
             DATABASE.listDocuments(
-                DB_ID, 
+                DATABASE_ID, 
                 COLLECTION_DEALS, 
-                [
-                    Query.equal('userId', `${currentUser.id}`)
-			    ]
-            );
-        },
+                [ Query.equal('userId', `${currentUser.id}`) ]
+            ),
         select: (data) => {
             console.log(data);
         }
