@@ -12,7 +12,7 @@ useHead({
     title: "Documents | Jira software"
 })
 
-const { data, isLoading } = useStatusQuery();
+const { data, isLoading, refetch } = useStatusQuery();
 
 </script>
 
@@ -29,15 +29,15 @@ const { data, isLoading } = useStatusQuery();
         <UiDealsLoader />
     </div>
     <div class="grid grid-cols-4 gap-4 mt-12" v-else>
-        <div v-for="(item, index) in data" :key="item.id">
+        <div v-for="(column, index) in data" :key="column.id">
             <UButton class="w-full h-12" color="blue" variant="outline">
-                <span class="fond-bold">{{ item.name }}</span>
-                <span class="text-sm text-neutral-500">{{ item.items.length }}</span>
+                <span class="fond-bold">{{ column.name }}</span>
+                <span class="text-sm text-neutral-500">{{ column.items.length }}</span>
             </UButton>
 
-            <SharedCreateDeal />
+            <SharedCreateDeal :status="column.id" :refetch="refetch"/>
 
-            <div v-for="card in item.items" :key="card.id" class="my-3 bg-gray-900 rounded-md p-2" role="button" draggable="true">
+            <div v-for="card in column.items" :key="card.id" class="my-3 bg-gray-900 rounded-md p-2" role="button" draggable="true">
                 <div class="flex items-center space-x-2">
                     <span class="font-bold text-lg uppercase">{{ card.name }}</span>
                 </div>

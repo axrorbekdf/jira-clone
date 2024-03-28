@@ -26,3 +26,10 @@ export interface IColumn{
     name: string,
     items: IDeal[]
 }
+
+export interface ICreateDeals {
+    name: string,
+    description: string,
+    state: string,
+    userId: string
+}
