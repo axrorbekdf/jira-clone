@@ -14,8 +14,7 @@ export const useStatusQuery = () => {
             DATABASE.listDocuments(
                 DATABASE_ID, 
                 COLLECTION_DEALS, 
-                // [Query.equal('userId', [`${currentUser.id}`])]
-                []
+                [Query.equal("userId", `${currentUser.id}`)]
             ),
         select: (data) => {
             const newBoard: IColumn[] = statusList.map(item => ({
