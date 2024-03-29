@@ -70,7 +70,7 @@ const {name, description} = event.data;
   mutate({
       name: name,
       description: description,
-      status: props.status,
+      status: `${props.status}`,
       userId: `${currentUser.id}`
   })
 }
