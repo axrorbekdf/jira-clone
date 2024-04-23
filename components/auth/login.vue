@@ -35,7 +35,7 @@ async function onSubmit (event: FormSubmitEvent<any>) {
   const {email, password} = event.data;
 
   try{
-    await ACCOUNT.createEmailPasswordSession(email, password);
+    await ACCOUNT.createEmailSession(email, password);
     const response = await ACCOUNT.get();
 
     authStore.set({

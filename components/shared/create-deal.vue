@@ -23,6 +23,7 @@ const state = reactive({
     name: undefined,
     description: undefined
 })
+const errors = ref('');
 
 const validate = (state: any): FormError[] => {
     const errors = [];
@@ -38,7 +39,7 @@ const { currentUser } = useAuthStore()
 const {isPending, mutate} = useMutation({
     mutationKey: ['create-deal'],
     mutationFn: (data: ICreateDeals) => {
-        DATABASE.createDocument(
+        return DATABASE.createDocument(
             DATABASE_ID,
             COLLECTION_DEALS,
             ID.unique(),
