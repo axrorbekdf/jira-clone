@@ -28,8 +28,8 @@ export interface IColumn{
 }
 
 export interface ICreateDeals {
-    name: string,
-    description: string,
-    state: string,
-    userId: string
+    name: String,
+    description: String,
+    state: String,
+    userId: String
 }
