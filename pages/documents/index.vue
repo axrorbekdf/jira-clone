@@ -13,8 +13,6 @@ useHead({
 }) 
 
 const { data, isLoading, refetch } = useStatusQuery();
-const {currentUser} = useAuthStore();
-
 
 </script>
 
