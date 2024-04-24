@@ -10,9 +10,11 @@ definePageMeta({
 
 useHead({
     title: "Documents | Jira software"
-})
+}) 
 
 const { data, isLoading, refetch } = useStatusQuery();
+const {currentUser} = useAuthStore();
+
 
 </script>
 

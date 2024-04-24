@@ -7,9 +7,11 @@ const router = useRouter();
 const loadingStore = useLoadingStore();
 
     onMounted(() => {
+        
         ACCOUNT.get()
         .then((response) => {
             loadingStore.set(false)
+
             authStore.set({
                 id: response.$id,
                 name: response.name,
