@@ -37,7 +37,7 @@ const { data, isLoading, refetch } = useStatusQuery();
 
             <SharedCreateDeal :status="column.id" :refetch="refetch"/>
 
-            <div v-for="card in column.items" :key="card.id" class="my-3 bg-gray-900 rounded-md p-2" role="button" draggable="true">
+            <div v-for="card in column.items" :key="card.id" class="my-3 bg-gray-900 rounded-md p-2 animation"  role="button" draggable="true">
                 <div class="flex items-center space-x-2">
                     <span class="font-bold text-lg uppercase">{{ card.name }}</span>
                 </div>
@@ -57,3 +57,22 @@ const { data, isLoading, refetch } = useStatusQuery();
     
     </div>
 </template>
+
+<style scoped>
+@keyframes show {
+    from{
+        transform: scale(0.5) translateY(0);
+        opacity: 1;
+    }
+    to{
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.animation{
+    animation: show 0.3s ease-in-out;
+}
+
+
+</style>
