@@ -17,11 +17,11 @@ const { data, isLoading, refetch } = useStatusQuery();
 </script>
 
 <template>
-    <div class="grid grid-cols-4 gap-4 mt-12" v-if="isLoading">
-        <USkeleton class="h-12 bg-gray-900" />
-        <USkeleton class="h-12 bg-gray-900" />
-        <USkeleton class="h-12 bg-gray-900" />
-        <USkeleton class="h-12 bg-gray-900" />
+    <div class="grid grid-cols-4 gap-4 mt-12" v-if="!isLoading">
+        <USkeleton class="h-12 dark:bg-gray-900 bg-gray-100" />
+        <USkeleton class="h-12 dark:bg-gray-900 bg-gray-100" />
+        <USkeleton class="h-12 dark:bg-gray-900 bg-gray-100" />
+        <USkeleton class="h-12 dark:bg-gray-900 bg-gray-100" />
 
         <UiDealsLoader />
         <UiDealsLoader />
