@@ -84,7 +84,7 @@ const {name, description} = event.data;
             <Icon name="material-symbols:add-circle-outline"  size="35"/>
         </UButton>
         <template #panel>
-            <div class="p-4 w-80 bg-gray-900">
+            <div class="p-4 w-80 dark:bg-gray-900 bg-gray-100">
                 <UAlert
                     icon="i-heroicons-command-line"
                     :description="errors"

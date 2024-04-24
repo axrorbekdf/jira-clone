@@ -37,7 +37,7 @@ const { data, isLoading, refetch } = useStatusQuery();
 
             <SharedCreateDeal :status="column.id" :refetch="refetch"/>
 
-            <div v-for="card in column.items" :key="card.id" class="my-3 bg-gray-900 rounded-md p-2 animation"  role="button" draggable="true">
+            <div v-for="card in column.items" :key="card.id" class="my-3 dark:bg-gray-900 bg-gray-100 rounded-md p-2 animation"  role="button" draggable="true">
                 <div class="flex items-center space-x-2">
                     <span class="font-bold text-lg uppercase">{{ card.name }}</span>
                 </div>
