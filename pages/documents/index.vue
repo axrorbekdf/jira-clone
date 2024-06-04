@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { UiDealsLoader, type USkeleton } from '#components';
 import type { UButton } from '#components';
-import { statusList  } from '~/constants';
+import { useMutation } from '@tanstack/vue-query';
+import { COLLECTION_DEALS, DATABASE_ID, statusList  } from '~/constants';
+import { DATABASE } from '~/libs/appwrite';
 import { useStatusQuery } from '~/query/use-status-query';
 
 definePageMeta({
@@ -13,6 +15,22 @@ useHead({
 }) 
 
 const { data, isLoading, refetch } = useStatusQuery();
+
+const dragCardRef = ref(null);
+const sourceColumnRef = ref(null);
+const isMoving = ref(null);
+
+const { mutate, isPending } = useMutation({
+    mutationKey: ['moveCard'],
+    mutationFn: ({docId, status}: {docId: string; status: string}) =>
+        DATABASE.updateDocument(DATABASE_ID, COLLECTION_DEALS, docId, {status}),
+    onSuccess:() => refetch(),
+});
+
+const handleDragStart = (IDeal, col) => {}
+const handleDragOver = () => {}
+const handleDrop = () => {}
+
 
 </script>
 
@@ -29,7 +47,7 @@ const { data, isLoading, refetch } = useStatusQuery();
         <UiDealsLoader />
     </div>
     <div class="grid grid-cols-4 gap-4 mt-12" v-else>
-        <div v-for="(column, index) in data" :key="column.id">
+        <div v-for="(column, index) in data" :key="column.id"  @dragover="handleDragOver" @drop="handleDrop">
             <UButton class="w-full h-12" color="blue" variant="outline">
                 <span class="fond-bold">{{ column.name }}</span>
                 <span class="text-sm text-neutral-500">{{ column.items.length }}</span>
@@ -37,7 +55,12 @@ const { data, isLoading, refetch } = useStatusQuery();
 
             <SharedCreateDeal :status="column.id" :refetch="refetch"/>
 
-            <div v-for="card in column.items" :key="card.id" class="my-3 dark:bg-gray-900 bg-gray-100 rounded-md p-2 animation"  role="button" draggable="true">
+            <div v-for="card in column.items" :key="card.id" 
+                class="my-3 dark:bg-gray-900 bg-gray-100 rounded-md p-2 animation"  
+                role="button" 
+                draggable="true"
+                @dragstart="handleDragStart"
+            >
                 <div class="flex items-center space-x-2">
                     <span class="font-bold text-lg uppercase">{{ card.name }}</span>
                 </div>
