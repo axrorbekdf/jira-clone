@@ -27,7 +27,9 @@ const { mutate, isPending } = useMutation({
     onSuccess:() => refetch(),
 });
 
-const handleDragStart = (IDeal, col) => {}
+const handleDragStart = (ideal, column) => {
+    isMoving.value = true;
+}
 const handleDragOver = () => {}
 const handleDrop = () => {}
 
